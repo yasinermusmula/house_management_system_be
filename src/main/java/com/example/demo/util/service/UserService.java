@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.util.service;
 
 import com.example.demo.dto.UserDto;
 import com.example.demo.entity.User;
@@ -14,5 +14,5 @@ public interface UserService {
 
     List<UserDto> findAllUser();
 
-    UserDto findUsersEmail(String email);
+    List<UserDto> findUsersEmail(String email);
 }
