@@ -1,6 +1,6 @@
 package com.example.demo.entity;
 
-public enum Property {
+public enum Houses {
     HOUSE,
     FARM,
     SUMMERHOUSE;
