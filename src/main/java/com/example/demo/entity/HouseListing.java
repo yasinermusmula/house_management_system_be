@@ -33,7 +33,7 @@ public class HouseListing {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "property_type")
-    private Property property;
+    private Houses property;
 
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "user_id",nullable = false)
