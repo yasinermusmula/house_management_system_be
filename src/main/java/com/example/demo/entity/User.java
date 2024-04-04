@@ -31,13 +31,13 @@ public class User {
     @Column(name = "password")
     private String password;
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<Listing> listings;
+    private List<HouseListing> listings;
 
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Reservation> reservations;
 
 
-    public void addListing(Listing listing){
+    public void addListing(HouseListing listing){
         if (listings == null){
             listings = new ArrayList<>();
         }

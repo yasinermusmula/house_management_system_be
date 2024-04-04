@@ -14,7 +14,7 @@ public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "start_date")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "start_date")
@@ -32,5 +32,5 @@ public class Reservation {
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "listing_id",nullable = false)
-    private Listing listing;
+    private HouseListing listing;
 }

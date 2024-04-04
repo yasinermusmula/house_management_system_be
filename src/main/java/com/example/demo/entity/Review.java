@@ -6,13 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Entity
-@Table
+@Table(name = "review",schema = "house_management")
 public class Review {
 
     @Id
@@ -31,7 +30,7 @@ public class Review {
 
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "listing_id",nullable = false)
-    private Listing listing;
+    private HouseListing listing;
 
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
     @JoinColumn(name = "user_id",nullable = false)
