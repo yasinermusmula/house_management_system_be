@@ -17,7 +17,7 @@ public class  HouseListingConvertion {
         return houseListingDtos;
     }
 
-    public static UserDto convertUser(User user){
-        return new UserDto(user.getName(), user.getSirName(), user.getEmail(), user.getListings(),user.getReservations());
+    public static HouseListingDto convertHouseListing(HouseListing houseListing){
+        return new HouseListingDto(houseListing.getTitle(), houseListing.getDescription(), houseListing.getPhotoUrls(),houseListing.getProperty(),houseListing.getUser().getId(),houseListing.getReviews());
     }
 }
