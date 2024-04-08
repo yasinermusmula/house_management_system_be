@@ -51,6 +51,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User findByOriginal(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+
+    @Override
     public List<UserDto> findAllUser() {
         List<User> userList = userRepository.findAll();
         return UserDtoConvertion.convertList(userList);

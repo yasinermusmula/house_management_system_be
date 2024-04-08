@@ -12,6 +12,8 @@ public interface UserService {
 
     UserDto delete(Long id);
 
+    User findByOriginal(Long id);
+
     List<UserDto> findAllUser();
 
     List<UserDto> findUsersEmail(String email);
