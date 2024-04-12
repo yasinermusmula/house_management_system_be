@@ -36,6 +36,7 @@ public class HouseListingServiceImpl implements HouseListingService{
             newHouseListing.setPhotoUrls(houseListing.getPhotoUrls());
             newHouseListing.setProperty(houseListing.getProperty());
             newHouseListing.setUser(user);
+            houseListingRepository.save(newHouseListing);
             return HouseListingConvertion.convertHouseListing(newHouseListing);
         }
         //TODO Make Exceptions here
