@@ -12,7 +12,7 @@ public interface HouseListingService {
 
     List<HouseListingDto> findByUser(Long userId);
 
-    HouseListingDto delete(Long userId);
+    HouseListingDto delete(Long id);
 
     HouseListing findByOriginal(Long id);
 }

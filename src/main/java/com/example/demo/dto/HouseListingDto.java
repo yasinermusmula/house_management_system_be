@@ -7,8 +7,6 @@ import java.util.List;
 
 public record HouseListingDto(String title,
                               String description,
-                              List<String> photoUrls,
                               Houses property,
-                              Long userId,
-                              List<Review> reviews) {
+                              Long userId) {
 }
