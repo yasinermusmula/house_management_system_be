@@ -7,18 +7,24 @@ import com.example.demo.repository.HouseListingRepository;
 import com.example.demo.util.HouseListingConvertion;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
 @NoArgsConstructor
 public class HouseListingServiceImpl implements HouseListingService{
 
     private HouseListingRepository houseListingRepository;
     private UserService userService;
+
+    @Autowired
+    public HouseListingServiceImpl(HouseListingRepository houseListingRepository, UserService userService) {
+        this.houseListingRepository = houseListingRepository;
+        this.userService = userService;
+    }
 
     @Override
     public HouseListingDto save(HouseListing houseListing, Long userId) {
@@ -30,7 +36,6 @@ public class HouseListingServiceImpl implements HouseListingService{
             newHouseListing.setPhotoUrls(houseListing.getPhotoUrls());
             newHouseListing.setProperty(houseListing.getProperty());
             newHouseListing.setUser(user);
-            newHouseListing.setReviews(houseListing.getReviews());
             return HouseListingConvertion.convertHouseListing(newHouseListing);
         }
         //TODO Make Exceptions here
@@ -50,8 +55,8 @@ public class HouseListingServiceImpl implements HouseListingService{
     }
 
     @Override
-    public HouseListingDto delete(Long userId) {
-        HouseListing houseListing = findByOriginal(userId);
+    public HouseListingDto delete(Long id) {
+        HouseListing houseListing = findByOriginal(id);
         houseListingRepository.delete(houseListing);
         return HouseListingConvertion.convertHouseListing(houseListing);
     }
