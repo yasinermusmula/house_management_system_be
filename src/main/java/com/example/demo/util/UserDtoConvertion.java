@@ -11,13 +11,13 @@ public class UserDtoConvertion {
     public static List<UserDto> convertList(List<User> users){
         List<UserDto> userDtos = new ArrayList<>();
         users.stream().forEach(user ->
-                userDtos.add(new UserDto(user.getName(), user.getSirName(),
+                userDtos.add(new UserDto(user.getName(), user.getSirname(),
                         user.getEmail())));
         return userDtos;
     }
 
     public static UserDto convertUser(User user){
-        return new UserDto(user.getName(), user.getSirName(), user.getEmail());
+        return new UserDto(user.getName(), user.getSirname(), user.getEmail());
     }
 
 }
