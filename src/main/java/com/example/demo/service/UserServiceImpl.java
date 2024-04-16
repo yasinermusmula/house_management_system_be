@@ -61,9 +61,9 @@ public class UserServiceImpl implements UserService{
         return UserDtoConvertion.convertList(userList);
     }
 
-    @Override
-    public List<UserDto> findUsersEmail(String email) {
-        List<User> userList = userRepository.findUserByEmail(email);
-        return UserDtoConvertion.convertList(userList);
-    }
+//    @Override
+//    public List<UserDto> findUsersEmail(String email) {
+//        List<User> userList = userRepository.findUserByEmail(email);
+//        return UserDtoConvertion.convertList(userList);
+//    }
 }
