@@ -1,14 +1,20 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.LoginResponseDto;
+import com.example.demo.dto.LoginUserDto;
+import com.example.demo.dto.UserResponseDto;
 import com.example.demo.entity.Role;
 import com.example.demo.entity.User;
+import com.example.demo.exception.GlobalExceptions;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -44,5 +50,16 @@ public class AuthenticationService {
         user.setRoles(roles);
 
         return userRepository.save(user);
+    }
+
+    public UserResponseDto login(LoginUserDto loginUserDto){
+        Optional<User> userOptional = userRepository.findUserByEmail(loginUserDto.email());
+        if (userOptional.isPresent()){
+            User user = userOptional.get();
+            if (passwordEncoder.matches(loginUserDto.password(), user.getPassword())){
+                return new UserResponseDto(user.getName());
+            }
+        }
+        throw new GlobalExceptions("User is not valid", HttpStatus.BAD_REQUEST);
     }
 }
