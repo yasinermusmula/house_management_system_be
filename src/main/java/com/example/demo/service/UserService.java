@@ -16,5 +16,5 @@ public interface UserService {
 
     List<UserDto> findAllUser();
 
-    List<UserDto> findUsersEmail(String email);
+//    UserDto findUsersEmail(String email);
 }
