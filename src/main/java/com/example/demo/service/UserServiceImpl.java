@@ -1,10 +1,13 @@
 package com.example.demo.service;
 
 import com.example.demo.dto.UserDto;
+import com.example.demo.dto.UserResponseDto;
 import com.example.demo.entity.User;
+import com.example.demo.exception.GlobalExceptions;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.util.UserDtoConvertion;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -59,6 +62,17 @@ public class UserServiceImpl implements UserService{
     public List<UserDto> findAllUser() {
         List<User> userList = userRepository.findAll();
         return UserDtoConvertion.convertList(userList);
+    }
+
+    @Override
+    public UserResponseDto findUserEmail(String email) {
+        Optional<User> user = userRepository.findUserByEmail(email);
+        if (user.isPresent()){
+            User existUser = user.get();
+            return new UserResponseDto(existUser.getId(), existUser.getName(),existUser.getPassword()
+                    ,existUser.getEmail());
+        }
+        throw new GlobalExceptions("User is not valid", HttpStatus.BAD_REQUEST);
     }
 
 //    @Override
