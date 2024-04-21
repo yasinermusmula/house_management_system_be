@@ -57,7 +57,7 @@ public class AuthenticationService {
         if (userOptional.isPresent()){
             User user = userOptional.get();
             if (passwordEncoder.matches(loginUserDto.password(), user.getPassword())){
-                return new UserResponseDto(user.getName());
+                return new UserResponseDto(user.getId(),user.getName(), user.getPassword(), user.getEmail());
             }
         }
         throw new GlobalExceptions("User is not valid", HttpStatus.BAD_REQUEST);
